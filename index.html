@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Neighborhood Map</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="http://getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <nav id="drawer" class="light-blue">
+        <h3>Search for Popular Places in Turku, Finland</h3>
+        <input name="market" id="find" data-bind="event: { change : searchChange }, textInput: searchText">
+        <br><br>
+        <p data-bind="visible: showError">No results. All places show up as default.</p>
+
+        <div data-bind="visible: showLocation">
+            <ul data-bind="foreach: markers">
+                <li data-bind="text: title, click: $parent.clickToAnimate"></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div id="menu">
+            <button type="button" class="btn btn-default">
+              <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+            </button>
+        </div>
+        <div id="map"></div>
+    </main>
+    <script>
+        // Open the drawer when the menu ison is clicked. Taken from off-canvas course
+        var menu = document.querySelector('#menu');
+        var main = document.querySelector('main');
+        var drawer = document.querySelector('#drawer');
+
+        menu.addEventListener('click', function(e) {
+            drawer.classList.toggle('open');
+            e.stopPropagation();
+        });
+        main.addEventListener('click', function() {
+            drawer.classList.remove('open');
+        });
+
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+    <script src="http://knockoutjs.com/downloads/knockout-3.4.0.js"></script>
+    <script src="js/script.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?libraries=geometry,drawing&key=AIzaSyANKHYS4ExsKE1QlaSAm56Lu25ozBryXk4&v=3&callback=initMap"
+            onerror="alert('Errors occur when retrieving Google Map API');">
+    </script>
+</body>
+
+</html>
