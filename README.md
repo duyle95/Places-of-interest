@@ -1,5 +1,9 @@
-* README for Neighborhood Map Project for FEND Udacity Nanodegree.
-# In the root directory, right click the file name index.html, choose 'open with' and click to your favorite web browser to start the map.
-# The map contains some locations of Popular Places of Interest in Turku City, Finland according to Foursquare.
-# Clicking each marker will show an infowindow about the clicked marker: name and address of the places and rating from Foursquare.
-# Markers have some basic animation(bouncing and color change).
+# Neighborhood Map Project
+A project of Front-end Web Developer Udacity Nanodegree. The map contains some locations of Popular Places of Interest in Turku City, Finland using Foursquare API.
+# Installation
+Clone the file or download the .zip file.
+Open index.html in browser.
+You need a Google API-KEY to have the app run correctly.
+# API Reference
+Get Foursquare Client-ID and Client-Secret https://developer.foursquare.com/
+Get Google API-KEY https://console.developers.google.com/
