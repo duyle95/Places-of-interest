@@ -145,8 +145,8 @@ function toggleBounce(marker) {
 
         var address;
 
-        var CLIENT_ID = '04XUPZY01ZT0ADIQIASN0U2FM0ZB14PKUIXQFUFLK4Q4JQ0Q';
-        var CLIENT_SECRET = 'AAWY00THYTZSYUNBFQOGZTOPSOOPEWW0ILXYC2UTC2XEPQ2O';
+        var CLIENT_ID = ''; // add your own foursquare client id
+        var CLIENT_SECRET = ''; // add your own foursquare client secret
 
         var version = year + month + day;
         var base_url = "https://api.foursquare.com/v2/venues";
