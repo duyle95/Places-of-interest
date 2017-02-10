@@ -11,12 +11,20 @@ var Model = [
   {title: 'Pub Niska', location: {lat: 60.44795641580881, lng: 22.266663209443983}, id: '4ff56015e4b0f08304219bdb'},
   {title: 'Tiirikkala', location: {lat: 60.451886303514094, lng: 22.27342877180374}, id: '53b0fa13498e8cd08336b1c3'},
   {title: 'Turku Castle', location: {lat: 60.43549995759725, lng: 22.22905397415161}, id: '4be3d9a6d27a20a1dd29935b'},
-  {title: 'Fontana', location: {lat: 60.449612, lng: 22.268206}, id: '4bd16390046076b053c27171'}
+  {title: 'Fontana', location: {lat: 60.449612, lng: 22.268206}, id: '4bd16390046076b053c27171'},
+  {title: 'Turun kauppahalli', location: {lat: 60.449920, lng: 22.265184}, id: '4b8e2f1df964a520a91a33e3'},
+  {title: 'Pure Foodin', location: {lat: 60.452637, lng: 22.271922}, id: '544aa3db498ebace7218d0eb'},
+  {title: 'Tuomiokirkkopuisto', location: {lat: 60.452665, lng: 22.275950}, id: '4c30e6fd66e40f470c3bc48b'},
+  {title: 'Dance Studio Funky', location: {lat: 60.446908, lng: 22.238298}, id: '511cae9ce4b017a41e439568'},
+  {title: 'La Caffettiera', location: {lat: 60.449554, lng: 22.292697}, id: '4bc83bc414d7952124ad68e9'},
+  {title: 'Delhi Darbar', location: {lat: 60.451936, lng: 22.282974}, id: '4bc2f7ae4cdfc9b6c7ad9621'},
+  {title: 'Samppalinnan maauimala', location: {lat: 60.445640, lng: 22.264853}, id: '4be24d0421d5a59348651611'},
+
 ];
 var map;
 var markers =[];
 
-
+// Apply Knockout.js
 function ViewModel() {
 
   var self = this;
@@ -141,6 +149,11 @@ function toggleBounce(marker) {
         var date = new Date();
         var year = date.getFullYear().toString();
         var month = (1 + date.getMonth()).toString();
+        console.log(month);
+        if (month < 10) {
+          month = '0' + month;
+
+        }
         var day = date.getDate().toString();
 
         var address;
@@ -165,8 +178,15 @@ function toggleBounce(marker) {
         }).then(function(data){
           console.log(data);
           var address = data.response.venue.location.address + ', ' + data.response.venue.location.city + ', ' + data.response.venue.location.country;
+          var phone;
+          if (data.response.venue.contact.formattedPhone){
+            phone = data.response.venue.contact.formattedPhone;
+          }
+          else {
+            phone = "None"
+          }
           var rating = data.response.venue.rating;
-          infowindow.setContent('<div><h3>' + marker.title + '</h3><p>' + address + '</p><p><b>Rating</b>: ' + rating + '</p>');
+          infowindow.setContent('<div><h3>' + marker.title + '</h3><p><b>Address: </b>' + address + '</p><p><b>Phone: </b>' + phone + '</p><p><b>Rating</b>: ' + rating + '</p>');
         }).fail(function(e){
           alert("Errors when retrieving Foursquare API");
         });
